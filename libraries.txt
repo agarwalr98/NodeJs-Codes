@@ -1,0 +1,14 @@
+Libraries and their uses
+1. fs - filesystem (Perform read and write operations on file)
+2. url - for legacy API .(pass the url and fetch it)
+
+
+Need to be installed- 
+1. error handlers - Handle the errors//
+2. body parser - parse the body of a request(basically extract the data from any request.. ), Reading json file.
+3. serve-favicon - A favicon is a small 16×16 pixel icon that appears at the top of a web browser. It serves as branding for your website and a convenient way for visitors to locate your page when they have multiple tabs open..
+4. logger:
+5.  json
+6. express-session
+7. path, routes
+8. method-override
