@@ -1,7 +1,8 @@
 // https://www.tutorialspoint.com/nodejs/index.htm
 var http =require('http');
 var url = require('url')
-http.createServer (function(req, res){
+http.createServer (function(err, req, res){
+    console.error(err.stack);
     var path = url.parse(req.url).pathname;
     console.log( "Request for "+path +" received");
     res.writeHead(200, {'Content-Type': 'text/html'});

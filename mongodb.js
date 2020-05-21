@@ -9,18 +9,25 @@ var db = mongoose.connection
 
 db.on('error', console.error.bind(console, "mongodb connection error!"));
 
+const schemaOptions = {
+    timestamps: { createdAt: 'created_at', updatedAt: 'updated_at' },
+};
 //Define schema and models
 var schema = mongoose.Schema
 var someschema = new schema({
     Name: String,
-    date: Date,
-    age: Number
-});
+    age: Number 
+}, {timestamps: true});
+// Schema methods
+someschema.methods.GetName =function(){
+    return this.Name;
+};
+
 
 var somemodel= mongoose.model('somemodel', someschema );
 
 //model instance is a document of collection.
-var first_modelinstance = new somemodel({Name: 'xxx', date:20/10/2015, age:22});
+var first_modelinstance = new somemodel({Name: 'timestampTRUE',age:22});
 
 first_modelinstance.save(function(err)
 {
@@ -36,13 +43,13 @@ first_modelinstance.save(function(err)
     }
 });
 
-somemodel.find({'Name': 'xxx'}, 'Name age', function(err, results){
+somemodel.find({'Name': 'timestampTRUE'} , function(err, results){
     if (err)
     {
         throw (err);
     }
     else{
-        console.log(results[0].Name);
+        console.log("Results are: ", results[0]  ); //call the function declared within schema
     }
 }).sort({age: -1}).limit(3);
 
